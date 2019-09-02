@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IDGAF</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCXsgXcjapJuK635vViUER70pS5dsc1Fm4",
+            authDomain: "mi-primer-chat-13b7c.firebaseapp.com",
+            databaseURL: "https://mi-primer-chat-13b7c.firebaseio.com",
+            projectId: "mi-primer-chat-13b7c",
+            storageBucket: "",
+            messagingSenderId: "590035331646",
+            appId: "1:590035331646:web:d4ec21f267b4868f"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+
+    </script>
+</head>
+
+<body>
+    <input type="text" name="" id="elTexto" value="">
+    <p></p>
+    <input type="button" value="Enviar" onclick="enviar()">
+    <input type="button" value="Traer" onclick="traer()">
+</body>
+
+<script>
+
+    function traerTexto() {
+        return document.getElementById("elTexto").value;
+    }
+
+    function enviar() {
+        var mensaje = traerTexto();
+        console.log(mensaje);
+
+        db.collection("prueba").add(
+            { texto: mensaje }
+        );
+    }
+
+    function traer() {
+        var coleccion = db.collection("prueba");
+
+        coleccion.get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (datoJSON) {
+                console.log(datoJSON.data());
+            });
+        });
+
+
+    }
+
+</script>
+
+</html>

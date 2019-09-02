@@ -1,0 +1,33 @@
+create table Documentos (cod_documento, descripción);
+
+create table Oficinas (cod_oficina, codigo_director, descripcion);
+
+create table Empleados (cod_empleado, apellido, nombre, fecha_nacimiento, num_doc, cod_jefe, cod_oficina, cod_documento);
+
+create table Datos_contratos (cod_empleado, fecha_contrato, cuota, ventas);
+
+create table Fabricantes (cod_fabricante, razón_social);
+
+create table Listas (cod_lista, descripción, ganancia);
+
+create table Productos (cod_producto, descripcion, precio, cantidad_stock, punto_reposición, cod_fabricante);
+
+create table Precios (cod_producto, cod_lista, precio);
+
+create table Clientes (cod_cliente, cod_lista, razón_social);
+
+create table Pedidos (cod_pedido, fecha_pedido, cod_empleado, cod_cliente);
+
+create table Detalle_pedidos (cod_pedido, numero_linea, cod_producto, cantidad);
+
+
+alter table empleados add constraint foreign key(cod_documento) references documentos(cod_documento)/
+alter table empleados add constraint    foreign key(cod_oficina) references oficinas(cod_oficina)/
+alter table empleados add constraint    foreign key(cod_jefe) references empleados(cod_jefe)/
+
+alter table Datos_contratos add constraint foreign key (cod_empleado ) references Empleados (cod_empleado);
+
+alter table Productos add constraint foreign key (cod_fabricante ) references Fabricantes (cod_fabricante);
+
+
+
