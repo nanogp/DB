@@ -60,6 +60,8 @@
         coleccion.get().then(function (querySnapshot) {
             querySnapshot.forEach(function (datoJSON) {
                 console.log(datoJSON.data());
+                console.log(datoJSON.data().texto);
+                
             });
         });
 
