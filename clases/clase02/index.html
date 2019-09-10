@@ -30,6 +30,7 @@
         var db = firebase.firestore();
 
     </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -37,6 +38,8 @@
     <p></p>
     <input type="button" value="Enviar" onclick="enviar()">
     <input type="button" value="Traer" onclick="traer()">
+    <input type="button" value="Borrar" onclick="borrar()">
+    <div id="chat"></div>
 </body>
 
 <script>
@@ -50,22 +53,35 @@
         console.log(mensaje);
 
         db.collection("prueba").add(
-            { texto: mensaje }
+            {
+                texto: mensaje,
+                date: new Date()
+            }
         );
+
+        traer();
     }
 
     function traer() {
         var coleccion = db.collection("prueba");
+        $('#chat').empty();
+        coleccion.orderBy('date').get().then((querySnapshot) => {
 
-        coleccion.get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (datoJSON) {
-                console.log(datoJSON.data());
+            querySnapshot.forEach((datoJSON) => {
+                //console.log(datoJSON.data());
                 console.log(datoJSON.data().texto);
-                
+                let div = document.createElement('div');
+                let text = document.createTextNode(datoJSON.data().texto);
+                div.append(document.createElement('p'));
+                div.append(text);
+                $('#chat').prepend(div);
             });
+
         });
+    }
 
-
+    function borrar() {
+        var coleccion = db.collection("prueba").get().delete();
     }
 
 </script>
