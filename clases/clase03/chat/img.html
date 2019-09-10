@@ -1,15 +1,15 @@
 <html>
 
 <head>
-  <script src="./js/script.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/img.js"></script>
 </head>
 
 <body>
   <div>
-    <input type="file" name="archivo" id="imagen" onchange="guardarImagen()">
-    <input type="file" name="" id="water" onchange="guardarWater()">
-    <input type="button" value="mostrar imagen" onclick="mostrarImagen()">
+    <input type="file" name="archivo" id="inputImagen" onchange="guardarImagen">
+    <input type="file" name="" id="inputWater" onchange="guardarWater">
+    <input type="button" value="mostrar imagen" id="btnMostrar">
   </div>
 
   <div id="imagenProcesada">
