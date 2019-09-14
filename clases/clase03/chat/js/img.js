@@ -71,6 +71,7 @@ function guardarWater(evento) {
 function mostrarImagen() {
     console.info("mostrarImagen");
     let div = document.getElementById("imagenProcesada");
+    div.innerHTML = "";
     div.appendChild(newImagen(localStorage.imagen));
     div.appendChild(newImagen(localStorage.water));
     // marcaAgua();
