@@ -1,0 +1,30 @@
+CONTROL DE STOCK
+
+USUARIO
+-------
+Admin y usuario.
+El Admin puede manipular productos de cualquier local.
+El comun tiene un local asociado
+
+Alta
+Login
+
+PRODUCTO
+--------
+Alta:
+    Tiene
+        * combo de local
+Listado:
+    Tiene
+        -> va a alta del producto
+        -> va a detalle del producto
+Detalle:
+    Tiene 
+        * Foto del producto
+        * Descripcion del producto
+        * Botones para + y - stock -> abre modal para informar cantidad y motivo
+        * 
+
+json to csv
+jspdf
+highchart
