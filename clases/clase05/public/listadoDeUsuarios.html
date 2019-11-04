@@ -18,27 +18,6 @@
 </head>
 
 <body>
-
-  <!-- CHAT MARKUP -->
-  <div class="example-chat l-demo-container">
-    <header>Firebase Listado demo</header>
-
-    <div class='example-chat-toolbar'>
-      <p for="usuario">Listado de Usuarios:</p>
-
-    </div>
-
-    <ul id='listadodemensajes' class="example-chat-messages"></ul>
-
-    <footer>
-
-    </footer>
-  </div>
-
-
-
-
-
   <!--  JAVACRIPT -->
   <script>
 
@@ -48,15 +27,22 @@
     var campoUsuario = $('#usuario');
 
 
-    db.collection("usuarios").get()
-      .then(function (docRef) {
-        console.info("Document written with ID: ", docRef.collection);
-      })
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
+
+    db.collection("usuarios").onSnapshot(function (coleccion) {
+
+
+      console.info("la coleccion : ", coleccion.docs);
+
+
+      coleccion.forEach(function (objeto) {
+        // doc.data() is never undefined for query doc snapshots
+        console.info(objeto.data().usuario);
+
       });
 
 
+
+    });
 
 
   </script>
